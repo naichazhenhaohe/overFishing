@@ -20,6 +20,7 @@
 ## 短期规划
 
 - [ ] salmon run schedule
+- [ ] pvp
 
 ## 长远规划
 

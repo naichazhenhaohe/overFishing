@@ -8,14 +8,6 @@ import { MonthlyRewardGears, Phases } from '@/utils/coop.json'
 
 moment.locale('zh-cn')
 
-export interface Phase {
-  EndDateTime: string
-  RareWeaponID: number
-  StageID: number
-  StartDateTime: string
-  WeaponSets: number[]
-}
-
 export default () => {
   const [visibleNumber, setVisibleNumber] = React.useState(5)
 
