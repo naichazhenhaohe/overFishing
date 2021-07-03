@@ -4,6 +4,8 @@ import 'moment/locale/zh-cn'
 
 import Card from './components/card'
 
+import './index.scss'
+
 import { MonthlyRewardGears, Phases } from '@/utils/coop.json'
 
 moment.locale('zh-cn')
@@ -17,7 +19,7 @@ export default () => {
   }).slice(0, visibleNumber)
 
   return (
-    <div className="home">
+    <div className="salmon-run">
       {rotation.map((item, index) => (
         <Card phase={item} key={index} />
       ))}
