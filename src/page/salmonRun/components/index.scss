@@ -1,6 +1,47 @@
-.salmon-run-card-box {
+@mixin center-flex {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.card-box {
   width: 1080px;
-  margin: 32px auto;
+  margin: 2rem auto;
+  padding: 3rem 0;
   background-color: #ff5600;
   border-radius: 16px;
+  background: url(../../../asset/triangle-pink_2x.gif) repeat-x center center;
+  background-size: 250px 2250px;
+  animation: animate-steps 0.5s steps(3) infinite;
+  animation-play-state: paused;
+  &:hover {
+    animation-play-state: running;
+  }
+  .time-box {
+    @include center-flex;
+    flex-flow: row wrap;
+    padding-bottom: 1rem;
+    div {
+      height: 32px;
+      line-height: 32px;
+      font-size: 2rem;
+      color: beige;
+      width: 80%;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+  }
+  .stage-box {
+    @include center-flex;
+    margin-bottom: 1rem;
+    img {
+      width: 80%;
+    }
+  }
+  .weapon-box {
+    @include center-flex;
+    img:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
 }

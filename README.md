@@ -22,6 +22,7 @@
 - [ ] salmon run schedule
 - [ ] 多尺寸卡片 & time line 模式
 - [ ] pvp
+- [ ] 文字版
 
 ## 长远规划
 

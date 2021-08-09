@@ -17,10 +17,15 @@ export default ({ phase }: { phase: PhaseType }) => {
   const stageName = stages.find(item => item.Id === StageID)?.MapFileName
 
   return (
-    <div className="salmon-run-card-box">
-      <div>开始时间{startTime.format('MM/DD (dd) HH:mm a')}</div>
-      <div>结束时间{endTime.format('MM/DD (dd) HH:mm a')}</div>
-      <div>
+    <div className="card-box">
+      <section className="time-box">
+        <div>开始时间: {startTime.format('llll')}</div>
+        <div>结束时间: {endTime.format('llll')}</div>
+      </section>
+      <div className="stage-box">
+        <img src={`/stages/${stageName}.png`} alt="stage" />
+      </div>
+      <div className="weapon-box">
         {WeaponSets.map((id, index) => (
           <img
             key={index}
@@ -33,9 +38,6 @@ export default ({ phase }: { phase: PhaseType }) => {
           />
         ))}
         {isRareWeaponVisible && <img src={`/weapons/Wst_${RareWeaponName}.png`} />}
-      </div>
-      <div>
-        <img src={`/stages/${stageName}.png`} alt="stage" />
       </div>
     </div>
   )

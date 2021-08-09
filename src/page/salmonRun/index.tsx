@@ -11,7 +11,7 @@ import { MonthlyRewardGears, Phases } from '@/utils/coop.json'
 moment.locale('zh-cn')
 
 export default () => {
-  const [visibleNumber, setVisibleNumber] = React.useState(5)
+  const [visibleNumber, setVisibleNumber] = React.useState(15)
 
   const rotation = Phases.filter(phase => {
     const end = moment(phase.EndDateTime + '+00:00')

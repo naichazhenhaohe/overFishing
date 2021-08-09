@@ -7,7 +7,7 @@ import Header from '@/components/header'
 export default () => {
   return (
     <BrowserRouter>
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route path="/" exact component={Home} />
       </Switch>
