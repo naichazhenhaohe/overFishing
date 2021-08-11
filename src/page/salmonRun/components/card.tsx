@@ -5,6 +5,7 @@ import { weapons } from '@/utils/WeaponInfo_Main.json'
 import stages from '@/utils/MapInfo.json'
 import { PhaseType, WeaponType } from '../data.d'
 
+import env from './env'
 import './index.scss'
 
 export default ({ phase }: { phase: PhaseType }) => {
@@ -15,7 +16,7 @@ export default ({ phase }: { phase: PhaseType }) => {
   const RareWeaponName = weapons.find((item: WeaponType) => item.Id === RareWeaponID)?.Name
   const isRareWeaponVisible = WeaponSets.includes(-1) || WeaponSets.includes(-2)
   const stageName = stages.find(item => item.Id === StageID)?.MapFileName
-
+  console.log(env, 'env')
   return (
     <div className="card-box">
       <section className="time-box">
@@ -23,7 +24,7 @@ export default ({ phase }: { phase: PhaseType }) => {
         <div>结束时间: {endTime.format('llll')}</div>
       </section>
       <div className="stage-box">
-        <img src={`/stages/${stageName}.png`} alt="stage" />
+        <img src={`${env === 'development' ? '' : '/overfishing'}/stages/${stageName}.png`} alt="stage" />
       </div>
       <div className="weapon-box">
         {WeaponSets.map((id, index) => (
@@ -31,13 +32,17 @@ export default ({ phase }: { phase: PhaseType }) => {
             key={index}
             src={
               [-1, -2].includes(id)
-                ? `/weapons/questionmark${id === -2 ? '2' : ''}.png`
-                : `/weapons/Wst_${weapons.find((item: WeaponType) => item.Id === id)?.Name}.png`
+                ? `${env === 'development' ? '' : '/overfishing'}/weapons/questionmark${id === -2 ? '2' : ''}.png`
+                : `${env === 'development' ? '' : '/overfishing'}/weapons/Wst_${
+                    weapons.find((item: WeaponType) => item.Id === id)?.Name
+                  }.png`
             }
             alt="weapon"
           />
         ))}
-        {isRareWeaponVisible && <img src={`/weapons/Wst_${RareWeaponName}.png`} />}
+        {isRareWeaponVisible && (
+          <img src={`${env === 'development' ? '' : '/overfishing'}/weapons/Wst_${RareWeaponName}.png`} />
+        )}
       </div>
     </div>
   )

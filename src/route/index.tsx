@@ -6,7 +6,7 @@ import Header from '@/components/header'
 
 export default () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/overfishing'>
       {/* <Header /> */}
       <Switch>
         <Route path="/" exact component={Home} />
