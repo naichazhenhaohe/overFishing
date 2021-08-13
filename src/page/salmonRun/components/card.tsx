@@ -5,18 +5,19 @@ import { weapons } from '@/utils/WeaponInfo_Main.json'
 import stages from '@/utils/MapInfo.json'
 import { PhaseType, WeaponType } from '../data.d'
 
-import env from './env'
+import env from '@/utils/env'
 import './index.scss'
 
 export default ({ phase }: { phase: PhaseType }) => {
   const endTime = moment(phase.EndDateTime + '+00:00')
   const startTime = moment(phase.StartDateTime + '+00:00')
-
   const { RareWeaponID, StageID, WeaponSets } = phase
   const RareWeaponName = weapons.find((item: WeaponType) => item.Id === RareWeaponID)?.Name
-  const isRareWeaponVisible = WeaponSets.includes(-1) || WeaponSets.includes(-2)
+  // 只有存在绿问号的时候需要展示熊武器
+  const isRareWeaponVisible = WeaponSets.includes(-1)
   const stageName = stages.find(item => item.Id === StageID)?.MapFileName
-  console.log(env, 'env')
+  const prefix = env === 'development' ? '' : '/overfishing'
+
   return (
     <div className="card-box">
       <section className="time-box">
@@ -24,7 +25,7 @@ export default ({ phase }: { phase: PhaseType }) => {
         <div>结束时间: {endTime.format('llll')}</div>
       </section>
       <div className="stage-box">
-        <img src={`${env === 'development' ? '' : '/overfishing'}/stages/${stageName}.png`} alt="stage" />
+        <img src={`${prefix}/stages/${stageName}.png`} alt="stage" />
       </div>
       <div className="weapon-box">
         {WeaponSets.map((id, index) => (
@@ -32,17 +33,13 @@ export default ({ phase }: { phase: PhaseType }) => {
             key={index}
             src={
               [-1, -2].includes(id)
-                ? `${env === 'development' ? '' : '/overfishing'}/weapons/questionmark${id === -2 ? '2' : ''}.png`
-                : `${env === 'development' ? '' : '/overfishing'}/weapons/Wst_${
-                    weapons.find((item: WeaponType) => item.Id === id)?.Name
-                  }.png`
+                ? `${prefix}/weapons/questionmark${id === -2 ? '2' : ''}.png`
+                : `${prefix}/weapons/Wst_${weapons.find((item: WeaponType) => item.Id === id)?.Name}.png`
             }
             alt="weapon"
           />
         ))}
-        {isRareWeaponVisible && (
-          <img src={`${env === 'development' ? '' : '/overfishing'}/weapons/Wst_${RareWeaponName}.png`} />
-        )}
+        {isRareWeaponVisible && <img src={`${prefix}/weapons/Wst_${RareWeaponName}.png`} />}
       </div>
     </div>
   )
