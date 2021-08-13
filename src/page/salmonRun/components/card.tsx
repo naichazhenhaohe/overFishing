@@ -24,7 +24,7 @@ export default ({ phase }: { phase: PhaseType }) => {
         <div>结束时间: {endTime.format('llll')}</div>
       </section>
       <div className="stage-box">
-        <img src={`${prefix}/stages/${stageName}.png`} alt="stage" />
+        <img src={`/overfishing/stages/${stageName}.png`} alt="stage" />
       </div>
       <div className="weapon-box">
         {WeaponSets.map((id, index) => (
@@ -32,13 +32,13 @@ export default ({ phase }: { phase: PhaseType }) => {
             key={index}
             src={
               [-1, -2].includes(id)
-                ? `${prefix}/weapons/questionmark${id === -2 ? '2' : ''}.png`
-                : `${prefix}/weapons/Wst_${weapons.find((item: WeaponType) => item.Id === id)?.Name}.png`
+                ? `/overfishing/weapons/questionmark${id === -2 ? '2' : ''}.png`
+                : `/overfishing/weapons/Wst_${weapons.find((item: WeaponType) => item.Id === id)?.Name}.png`
             }
             alt="weapon"
           />
         ))}
-        {isRareWeaponVisible && <img src={`${prefix}/weapons/Wst_${RareWeaponName}.png`} />}
+        {isRareWeaponVisible && <img src={`/overfishing/weapons/Wst_${RareWeaponName}.png`} />}
       </div>
     </div>
   )
