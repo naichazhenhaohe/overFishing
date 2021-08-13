@@ -5,7 +5,6 @@ import { weapons } from '@/utils/WeaponInfo_Main.json'
 import stages from '@/utils/MapInfo.json'
 import { PhaseType, WeaponType } from '../data.d'
 
-import env from '@/utils/env'
 import './index.scss'
 
 export default ({ phase }: { phase: PhaseType }) => {
@@ -16,7 +15,7 @@ export default ({ phase }: { phase: PhaseType }) => {
   // 只有存在绿问号的时候需要展示熊武器
   const isRareWeaponVisible = WeaponSets.includes(-1)
   const stageName = stages.find(item => item.Id === StageID)?.MapFileName
-  const prefix = env === 'development' ? '' : '/overfishing'
+  const prefix = '/overfishing'
 
   return (
     <div className="card-box">
