@@ -1,10 +1,13 @@
 import * as React from 'react'
+import dayjs from 'dayjs'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import 'dayjs/locale/zh-cn'
 
 import Home from '@/page/salmonRun'
 import Header from '@/components/header'
-
 import isPhone from '@/utils/isPhone'
+
+dayjs.locale('zh-cn')
 
 export default () => {
   return (

@@ -9,11 +9,6 @@ import './index.scss'
 
 import { MonthlyRewardGears, Phases } from '@/utils/coop.json'
 
-dayjs.extend(utc)
-dayjs.extend(timezone)
-
-dayjs.tz.setDefault(dayjs.tz.guess())
-
 export default () => {
   const [visibleNumber, setVisibleNumber] = React.useState(5)
 

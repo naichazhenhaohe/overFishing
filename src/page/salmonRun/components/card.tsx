@@ -1,4 +1,8 @@
 import * as React from 'react'
+import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 
 import weapons from '@/utils/WeaponInfo_Main.json'
 import clothes from '@/utils/GearInfo_Clothes.json'
@@ -10,9 +14,14 @@ import { PhaseType } from '../data.d'
 
 import './index.scss'
 
+dayjs.extend(localizedFormat)
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
 export default ({ phase }: { phase: PhaseType }) => {
   const endTime = phase.EndDateTime
   const startTime = phase.StartDateTime
+
   const { RareWeaponID, StageID, WeaponSets, GearID, GearKind } = phase
   const RareWeaponName = weapons.find(item => item.Id === RareWeaponID)?.Name
   // 只有存在绿问号的时候需要展示熊武器
@@ -25,8 +34,8 @@ export default ({ phase }: { phase: PhaseType }) => {
   return (
     <div className="card-box">
       <section className="time-box">
-        <div>开始时间: {startTime}</div>
-        <div>结束时间: {endTime}</div>
+        <div>开始时间: {dayjs(startTime).utc(true).tz(dayjs.tz.guess()).format('llll')}</div>
+        <div>结束时间: {dayjs(endTime).utc(true).tz(dayjs.tz.guess()).format('llll')}</div>
       </section>
       <div className="stage-box">
         <img src={`/overfishing/stages/${stageName}.png`} alt="stage" />
