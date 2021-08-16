@@ -4,6 +4,8 @@ export interface PhaseType {
   StageID: number
   StartDateTime: string
   WeaponSets: number[]
+  GearID?: number
+  GearKind?: string
 }
 
 export interface WeaponType {

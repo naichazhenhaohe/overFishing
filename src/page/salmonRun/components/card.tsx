@@ -1,27 +1,32 @@
 import * as React from 'react'
-import moment from 'moment'
 
-import { weapons } from '@/utils/WeaponInfo_Main.json'
+import weapons from '@/utils/WeaponInfo_Main.json'
+import clothes from '@/utils/GearInfo_Clothes.json'
+import head from '@/utils/GearInfo_Head.json'
+import shoes from '@/utils/GearInfo_Shoes.json'
+
 import stages from '@/utils/MapInfo.json'
-import { PhaseType, WeaponType } from '../data.d'
+import { PhaseType } from '../data.d'
 
 import './index.scss'
 
 export default ({ phase }: { phase: PhaseType }) => {
-  const endTime = moment(phase.EndDateTime + '+00:00')
-  const startTime = moment(phase.StartDateTime + '+00:00')
-  const { RareWeaponID, StageID, WeaponSets } = phase
-  const RareWeaponName = weapons.find((item: WeaponType) => item.Id === RareWeaponID)?.Name
+  const endTime = phase.EndDateTime
+  const startTime = phase.StartDateTime
+  const { RareWeaponID, StageID, WeaponSets, GearID, GearKind } = phase
+  const RareWeaponName = weapons.find(item => item.Id === RareWeaponID)?.Name
   // 只有存在绿问号的时候需要展示熊武器
   const isRareWeaponVisible = WeaponSets.includes(-1)
   const stageName = stages.find(item => item.Id === StageID)?.MapFileName
-  const prefix = '/overfishing'
+
+  const gearInfo = GearKind === 'cClothes' ? clothes : GearKind === 'cHead' ? head : shoes
+  const gearModelName = gearInfo.find(gear => gear.Id === GearID)?.ModelName
 
   return (
     <div className="card-box">
       <section className="time-box">
-        <div>开始时间: {startTime.format('llll')}</div>
-        <div>结束时间: {endTime.format('llll')}</div>
+        <div>开始时间: {startTime}</div>
+        <div>结束时间: {endTime}</div>
       </section>
       <div className="stage-box">
         <img src={`/overfishing/stages/${stageName}.png`} alt="stage" />
@@ -33,12 +38,13 @@ export default ({ phase }: { phase: PhaseType }) => {
             src={
               [-1, -2].includes(id)
                 ? `/overfishing/weapons/questionmark${id === -2 ? '2' : ''}.png`
-                : `/overfishing/weapons/Wst_${weapons.find((item: WeaponType) => item.Id === id)?.Name}.png`
+                : `/overfishing/weapons/Wst_${weapons.find(item => item.Id === id)?.Name}.png`
             }
             alt="weapon"
           />
         ))}
         {isRareWeaponVisible && <img src={`/overfishing/weapons/Wst_${RareWeaponName}.png`} />}
+        <img src={`/overfishing/gears/${gearModelName}.png`} />
       </div>
     </div>
   )

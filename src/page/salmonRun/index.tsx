@@ -1,6 +1,7 @@
 import * as React from 'react'
-import moment from 'moment'
-import 'moment/locale/zh-cn'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 
 import Card from './components/card'
 
@@ -8,15 +9,30 @@ import './index.scss'
 
 import { MonthlyRewardGears, Phases } from '@/utils/coop.json'
 
-moment.locale('zh-cn')
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+dayjs.tz.setDefault(dayjs.tz.guess())
 
 export default () => {
   const [visibleNumber, setVisibleNumber] = React.useState(5)
 
   const rotation = Phases.filter(phase => {
-    const end = moment(phase.EndDateTime + '+00:00')
-    return end.isAfter(moment())
-  }).slice(0, visibleNumber)
+    const end = dayjs(phase.EndDateTime)
+    return end.isAfter(dayjs())
+  })
+    .slice(0, visibleNumber)
+    .map(item => {
+      const reward = MonthlyRewardGears.find(reward => reward.DateTime === item.StartDateTime)
+
+      if (reward) {
+        return {
+          ...item,
+          ...reward
+        }
+      }
+      return item
+    })
 
   const handleScroll = (e: React.UIEvent<HTMLElement>): void => {
     const { scrollHeight, scrollTop, clientHeight } = e.target as HTMLElement
