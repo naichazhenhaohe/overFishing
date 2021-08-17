@@ -37,24 +37,29 @@ export default ({ phase }: { phase: PhaseType }) => {
         <div>开始时间: {dayjs(startTime).utc(true).tz(dayjs.tz.guess()).format('llll')}</div>
         <div>结束时间: {dayjs(endTime).utc(true).tz(dayjs.tz.guess()).format('llll')}</div>
       </section>
-      <div className="stage-box">
-        <img src={`/overfishing/stages/${stageName}.png`} alt="stage" />
-      </div>
-      <div className="weapon-box">
-        {WeaponSets.map((id, index) => (
-          <img
-            key={index}
-            src={
-              [-1, -2].includes(id)
-                ? `/overfishing/weapons/questionmark${id === -2 ? '2' : ''}.png`
-                : `/overfishing/weapons/Wst_${weapons.find(item => item.Id === id)?.Name}.png`
-            }
-            alt="weapon"
-          />
-        ))}
-        {isRareWeaponVisible && <img src={`/overfishing/weapons/Wst_${RareWeaponName}.png`} />}
-        <img src={`/overfishing/gears/${gearModelName}.png`} />
-      </div>
+      <section className="detail-box">
+        <div className="stage-box">
+          <img draggable="false" src={`/overfishing/stages/${stageName}.png`} alt="stage" />
+        </div>
+        <div className="weapon-box">
+          {WeaponSets.map((id, index) => (
+            <img
+              draggable="false"
+              key={index}
+              src={
+                [-1, -2].includes(id)
+                  ? `/overfishing/weapons/questionmark${id === -2 ? '2' : ''}.png`
+                  : `/overfishing/weapons/Wst_${weapons.find(item => item.Id === id)?.Name}.png`
+              }
+              alt="weapon"
+            />
+          ))}
+          {isRareWeaponVisible && <img src={`/overfishing/weapons/Wst_${RareWeaponName}.png`} />}
+        </div>
+        <div className="reward-box">
+          <img draggable="false" src={`/overfishing/gears/${gearModelName}.png`} />
+        </div>
+      </section>
     </div>
   )
 }

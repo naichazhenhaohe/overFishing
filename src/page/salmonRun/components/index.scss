@@ -14,6 +14,7 @@
   background-size: 250px 2250px;
   animation: animate-steps 0.5s steps(3) infinite;
   animation-play-state: paused;
+  position: relative;
   &:hover {
     animation-play-state: running;
   }
@@ -31,17 +32,38 @@
       text-align: center;
     }
   }
-  .stage-box {
+  .detail-box {
     @include center-flex;
-    margin-bottom: 1rem;
-    img {
-      width: 80%;
+    .stage-box {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: flex-end;
+      width: 70%;
+      margin-bottom: 1rem;
+      img {
+        width: 95%;
+      }
     }
-  }
-  .weapon-box {
-    @include center-flex;
-    img:not(:last-child) {
-      margin-right: 2rem;
+    .weapon-box {
+      width: 30%;
+      @include center-flex;
+      // img:not(:last-child) {
+      //   margin-right: 2rem;
+      // }
+      img {
+        display: inline-block;
+      }
+    }
+    .reward-box {
+      position: absolute;
+      top: 16px;
+      right: 32px;
+      width: 100px;
+      height: 100px;
+      img {
+        width: 100%;
+      }
     }
   }
 }
