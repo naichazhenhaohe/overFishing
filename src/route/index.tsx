@@ -7,6 +7,8 @@ import Home from '@/page/salmonRun'
 import Header from '@/components/header'
 import isPhone from '@/utils/isPhone'
 
+import '@/style/common.scss'
+
 dayjs.locale('zh-cn')
 
 export default () => {

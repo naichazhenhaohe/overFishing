@@ -1,11 +1,5 @@
-@mixin center-flex {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-}
 .card-box {
-  width: 1080px;
+  width: $cardWidth;
   margin: 5rem auto;
   padding: 3rem 0;
   background-color: #ff5600;
@@ -51,8 +45,14 @@
       // img:not(:last-child) {
       //   margin-right: 2rem;
       // }
-      img {
-        display: inline-block;
+      span {
+        width: 50%;
+        @include center-flex;
+        img {
+          width: 128px;
+          height: 128px;
+          display: inline-block;
+        }
       }
     }
     .reward-box {

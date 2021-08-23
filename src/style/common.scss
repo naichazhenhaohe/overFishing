@@ -1,0 +1,9 @@
+$cardWidth: 1080px;
+
+
+@mixin center-flex {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}

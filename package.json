@@ -158,7 +158,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "sass-resources-loader": "^2.2.4"
   },
   "homepage": "/overfishing"
 }

@@ -1,9 +1,8 @@
 import * as React from 'react'
 import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
 
 import Card from './components/card'
+import FilterBox from './components/filterBox/index'
 
 import './index.scss'
 
@@ -40,6 +39,7 @@ export default () => {
 
   return (
     <div className="salmon-run" onScroll={handleScroll}>
+      <FilterBox />
       {rotation.map((item, index) => (
         <Card phase={item} key={index} />
       ))}

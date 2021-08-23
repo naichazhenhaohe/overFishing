@@ -10,13 +10,21 @@ import head from '@/utils/GearInfo_Head.json'
 import shoes from '@/utils/GearInfo_Shoes.json'
 
 import stages from '@/utils/MapInfo.json'
-import { PhaseType } from '../data.d'
 
 import './index.scss'
 
 dayjs.extend(localizedFormat)
 dayjs.extend(utc)
 dayjs.extend(timezone)
+export interface PhaseType {
+  EndDateTime: string
+  RareWeaponID: number
+  StageID: number
+  StartDateTime: string
+  WeaponSets: number[]
+  GearID?: number
+  GearKind?: string
+}
 
 export default ({ phase }: { phase: PhaseType }) => {
   const endTime = phase.EndDateTime
@@ -43,16 +51,17 @@ export default ({ phase }: { phase: PhaseType }) => {
         </div>
         <div className="weapon-box">
           {WeaponSets.map((id, index) => (
-            <img
-              draggable="false"
-              key={index}
-              src={
-                [-1, -2].includes(id)
-                  ? `/overfishing/weapons/questionmark${id === -2 ? '2' : ''}.png`
-                  : `/overfishing/weapons/Wst_${weapons.find(item => item.Id === id)?.Name}.png`
-              }
-              alt="weapon"
-            />
+            <span key={index}>
+              <img
+                draggable="false"
+                src={
+                  [-1, -2].includes(id)
+                    ? `/overfishing/weapons/questionmark${id === -2 ? '2' : ''}.png`
+                    : `/overfishing/weapons/Wst_${weapons.find(item => item.Id === id)?.Name}.png`
+                }
+                alt="weapon"
+              />
+            </span>
           ))}
           {isRareWeaponVisible && <img src={`/overfishing/weapons/Wst_${RareWeaponName}.png`} />}
         </div>
