@@ -1,9 +1,17 @@
 $cardWidth: 1080px;
 
-
 @mixin center-flex {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
+}
+
+@keyframes animate-steps {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -2000px;
+  }
 }

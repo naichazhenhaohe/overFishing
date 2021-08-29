@@ -1,0 +1,22 @@
+.checkbox-group-box {
+  display: flex;
+  justify-self: flex-start;
+  align-items: center;
+  label {
+    @include center-flex;
+    margin-right: 16px;
+    cursor: pointer;
+    span {
+      font-size: 1.3rem;
+      line-height: 24px;
+      height: 24px;
+    }
+    img {
+      height: 24px;
+      margin-right: 8px;
+    }
+  }
+  input {
+    display: none;
+  }
+}

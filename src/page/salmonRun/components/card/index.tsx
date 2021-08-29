@@ -26,7 +26,7 @@ export interface PhaseType {
   GearKind?: string
 }
 
-export default ({ phase }: { phase: PhaseType }) => {
+export default ({ phase, isLatestIssue }: { phase: PhaseType; isLatestIssue: boolean }) => {
   const endTime = phase.EndDateTime
   const startTime = phase.StartDateTime
 

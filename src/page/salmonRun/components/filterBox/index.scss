@@ -1,0 +1,21 @@
+.filter-box {
+  width: $cardWidth;
+  margin: 5rem auto;
+  padding: 3rem 0;
+  background-color: #ff5600;
+  border-radius: 16px;
+  background: url(../../../../asset/purple-zigzags.png) repeat-x center center;
+  background-size: 250px 2250px;
+  animation: animate-steps 0.5s steps(3) infinite;
+  animation-play-state: paused;
+  position: relative;
+  &:hover {
+    animation-play-state: running;
+  }
+  section {
+    @include center-flex;
+    label > span {
+      color: #eeff00;
+    }
+  }
+}
