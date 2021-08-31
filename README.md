@@ -19,8 +19,9 @@
 
 ## 短期规划
 
-- [ ] salmon run schedule
-- [ ] 多尺寸卡片 & time line 模式
+- [x] salmon run schedule
+- [ ] 简洁mode
+- [ ] 移动端适配
 - [ ] pvp
 - [ ] 文字版
 
