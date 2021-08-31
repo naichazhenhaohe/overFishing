@@ -10,7 +10,7 @@ import './index.scss'
 import { MonthlyRewardGears, Phases } from '@/utils/coop.json'
 
 export default () => {
-  const [visibleNumber, setVisibleNumber] = React.useState(5)
+  const [visibleNumber, setVisibleNumber] = React.useState<number>(5)
   const [options, setOptions] = React.useState<FilterOptions[]>([
     {
       label: '大坝',
