@@ -5,7 +5,7 @@ import 'dayjs/locale/zh-cn'
 
 import Home from '@/page/salmonRun'
 import Header from '@/components/header'
-import isPhone from '@/utils/isPhone'
+import { isPhone } from '@/utils/util'
 
 import '@/style/common.scss'
 

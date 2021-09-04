@@ -1,6 +1,6 @@
 import * as React from 'react'
-import checked from '@/asset/checked.png'
-import unchecked from '@/asset/unchecked.png'
+import checked from '@/asset/img/checked.png'
+import unchecked from '@/asset/img/unchecked.png'
 
 import './index.scss'
 

@@ -4,7 +4,7 @@
   padding: 3rem 0;
   background-color: #ff5600;
   border-radius: 16px;
-  background: url(../../../../asset/triangle-pink_2x.gif) repeat-x center center;
+  background: url(../../../../asset/img/triangle-pink_2x.gif) repeat-x center center;
   background-size: 250px 2250px;
   animation: animate-steps 0.5s steps(3) infinite;
   animation-play-state: paused;
@@ -32,8 +32,8 @@
       display: flex;
       flex-flow: row wrap;
       align-items: center;
-      justify-content: flex-end;
-      width: 70%;
+      justify-content: center;
+      width: 60%;
       margin-bottom: 1rem;
       img {
         width: 95%;
@@ -42,9 +42,6 @@
     .weapon-box {
       width: 30%;
       @include center-flex;
-      // img:not(:last-child) {
-      //   margin-right: 2rem;
-      // }
       span {
         width: 50%;
         @include center-flex;

@@ -5,6 +5,8 @@ import Card from './components/card/index'
 import FilterBox from './components/filterBox/index'
 import { FilterOptions } from './components/filterBox/index'
 
+import BackTop from '@/components/backTop'
+
 import './index.scss'
 
 import { MonthlyRewardGears, Phases } from '@/utils/coop.json'
@@ -18,7 +20,7 @@ export default () => {
       checked: true
     },
     {
-      label: '破难船',
+      label: '难破船',
       value: 5001,
       checked: true
     },
@@ -67,11 +69,12 @@ export default () => {
   }
 
   return (
-    <div className="salmon-run" onScroll={handleScroll}>
+    <div className="salmon-run" id="salmon-run" onScroll={handleScroll}>
       <FilterBox options={options} setOptions={setOptions} />
       {rotation.map((item, index) => (
         <Card phase={item} key={index} isLatestIssue={index === 0} />
       ))}
+      <BackTop rootName="salmon-run" />
     </div>
   )
 }

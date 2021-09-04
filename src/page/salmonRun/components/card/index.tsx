@@ -8,8 +8,9 @@ import weapons from '@/utils/WeaponInfo_Main.json'
 import clothes from '@/utils/GearInfo_Clothes.json'
 import head from '@/utils/GearInfo_Head.json'
 import shoes from '@/utils/GearInfo_Shoes.json'
-
 import stages from '@/utils/MapInfo.json'
+
+import { getFormatTime } from '@/utils/util'
 
 import './index.scss'
 
@@ -42,8 +43,7 @@ export default ({ phase, isLatestIssue }: { phase: PhaseType; isLatestIssue: boo
   return (
     <div className="card-box">
       <section className="time-box">
-        <div>开始时间: {dayjs(startTime).utc(true).tz(dayjs.tz.guess()).format('llll')}</div>
-        <div>结束时间: {dayjs(endTime).utc(true).tz(dayjs.tz.guess()).format('llll')}</div>
+        <div>{`${getFormatTime(startTime)} => ${getFormatTime(endTime)}`}</div>
       </section>
       <section className="detail-box">
         <div className="stage-box">
